@@ -23,4 +23,4 @@ Admin.profile
 
 # Files that can't be deployed
 **/permissionsets/sfdcInternalInt__sfdc_chatbot.permissionset-meta.xml
-**/genAiFunctions/**
+# **/genAiFunctions/**

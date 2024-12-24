@@ -1,0 +1,28 @@
+{
+  "required" : [ "ContactId", "ExperienceDescription", "ExperienceName" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "ContactId" : {
+      "title" : "ContactId",
+      "description" : "The Id for the customer who is making the request",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "ExperienceDescription" : {
+      "title" : "ExperienceDescription",
+      "description" : "Experience description provided by the customer when requesting a new experience at the resort",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "ExperienceName" : {
+      "title" : "ExperienceName",
+      "description" : "Experience name provided by the customer when requesting a new experience at the resort",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

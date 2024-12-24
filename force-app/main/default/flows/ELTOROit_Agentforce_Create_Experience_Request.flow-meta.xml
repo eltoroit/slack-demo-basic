@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <description>This flow is used to create records when a customer wants to request a new experience at the resort. Each Experience_Request__c has Request__c field that describes the experience, and a Experience_Name__c with the name of such experience. This flow requires both fields.</description>
+    <environments>Default</environments>
+    <interviewLabel>ELTOROit: Agentforce: Create Experience Request {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>ELTOROit: Agentforce: Create Experience Request</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <description>Creates the experience request based on the user&apos;s desire for a new experience</description>
+        <name>CREATE010</name>
+        <label>CREATE010 Create Experience Request</label>
+        <locationX>176</locationX>
+        <locationY>134</locationY>
+        <assignRecordIdToReference>ExperienceRequestId</assignRecordIdToReference>
+        <inputAssignments>
+            <field>Approval_Status__c</field>
+            <value>
+                <stringValue>Pending</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Contact__c</field>
+            <value>
+                <elementReference>ContactId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Experience_Name__c</field>
+            <value>
+                <elementReference>ExperienceName</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Request__c</field>
+            <value>
+                <elementReference>ExperienceDescription</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Experience_Request__c</object>
+    </recordCreates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>CREATE010</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <description>The Id for the customer who is making the request</description>
+        <name>ContactId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Experience description provided by the customer when requesting a new experience at the resort</description>
+        <name>ExperienceDescription</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Experience name provided by the customer when requesting a new experience at the resort</description>
+        <name>ExperienceName</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>The Id for the new experience record created</description>
+        <name>ExperienceRequestId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+</Flow>
