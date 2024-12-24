@@ -1,0 +1,12 @@
+<template>
+    <template lwc:if={orgExpires}>
+        <div class={badgeClass} style="width: 100%">
+            <div class="slds-align_absolute-center">
+                <lightning-formatted-rich-text value={daysLeft}></lightning-formatted-rich-text>
+            </div>
+        </div>
+    </template>
+    <template lwc:else>
+        Org does not expire
+    </template>
+</template>
