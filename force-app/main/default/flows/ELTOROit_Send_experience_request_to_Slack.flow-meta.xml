@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>SLACK020</name>
+        <label>SLACK020: Post flow to approve record</label>
+        <locationX>308</locationX>
+        <locationY>276</locationY>
+        <actionName>ELTOROit_Approve_Experience_Request</actionName>
+        <actionType>slackSendMessageToLaunchFlow</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>ActionInput__slackAppIdForToken</name>
+            <value>
+                <stringValue>A03269G3DNE</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>ActionInput__slackWorkspaceIdForToken</name>
+            <value>
+                <stringValue>T0864DHHFU1</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>ActionInput__slackConversationId</name>
+            <value>
+                <elementReference>ChannelID</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>ActionInput__slackMessage</name>
+            <value>
+                <stringValue>{!Message}
+Would you like to approve this experience request?</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>ActionInput__buttonLabel</name>
+            <value>
+                <stringValue>Approve</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recordId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>ELTOROit_Approve_Experience_Request</nameSegment>
+        <offset>0</offset>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <apiVersion>62.0</apiVersion>
+    <environments>Default</environments>
+    <formulas>
+        <name>ChannelID</name>
+        <dataType>String</dataType>
+        <expression>{!$CustomMetadata.Slack__mdt.MASTER.ChannelId__c}</expression>
+    </formulas>
+    <interviewLabel>ELTOROit: Send experience request to Slack {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>ELTOROit: Send experience request to Slack</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Approval_Status__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Approved</stringValue>
+            </value>
+        </filters>
+        <object>Experience_Request__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <scheduledPaths>
+            <connector>
+                <targetReference>SLACK020</targetReference>
+            </connector>
+            <pathType>AsyncAfterCommit</pathType>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>Message</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>*Inbound Experience Request*
+&gt; *Guest:* {!$Record.Contact__r.FirstName} {!$Record.Contact__r.LastName} ( {!$Record.Contact__r.Email} )
+&gt; *Experience* {!$Record.Name}: {!$Record.Experience_Name__c}
+&gt; *Description*:
+{!$Record.Request__c}</text>
+    </textTemplates>
+</Flow>
