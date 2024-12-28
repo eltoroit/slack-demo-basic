@@ -1,5 +1,7 @@
 # AgentForce Slack Demo Basic
 
+![Cover Page](@ELTORO.it/image.png)
+
 This repo goes together with this article: [Agentforce: Humans with agents drive customer success together](https://eltoro.it/agentforce-humans-with-agents-drive-customer-success-together-7d6742c904df)
 
 This repo demonstrates the integration between Salesforce, Agentforce, and Slack to create a seamless customer experience management solution. The demo showcases how resort guests can request new experiences through a Digital Experience site, with requests being automatically routed to Slack for team collaboration and approval.
