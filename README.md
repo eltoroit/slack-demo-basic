@@ -1,18 +1,25 @@
-# Salesforce DX Project: Next Steps
+# AgentForce Slack Demo Basic
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+This repo goes together with this article: [Agentforce: Humans with agents drive customer success together](https://eltoro.it/agentforce-humans-with-agents-drive-customer-success-together-7d6742c904df)
 
-## How Do You Plan to Deploy Your Changes?
+This repo demonstrates the integration between Salesforce, Agentforce, and Slack to create a seamless customer experience management solution. The demo showcases how resort guests can request new experiences through a Digital Experience site, with requests being automatically routed to Slack for team collaboration and approval.
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
+## Overview
 
-## Configure Your Salesforce DX Project
+This solution enables:
 
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
+-   Guest submission of experience requests through a Salesforce Digital Experience site
+-   Automatic creation of Experience Request records via Agentforce
+-   Real-time notification of requests in Slack
+-   Team collaboration and approval process directly within Slack
+-   Seamless status updates back to Salesforce
 
-## Read All About It
+## Prerequisites
 
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
+-   Salesforce org with Digital Experience enabled
+-   Slack workspace
+-   Completed Trailhead module: [Quick Start: Build Your First Agent with Agentforce](https://trailhead.salesforce.com)
+
+## Author
+
+(ELTORO.it) Andres Perez
